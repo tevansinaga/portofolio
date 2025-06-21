@@ -1,0 +1,175 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+header {
+  background: #fff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+}
+
+.hero {
+  height: 90vh;
+  background: linear-gradient(to right, #6a11cb, #2575fc);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin: 1rem 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  color: #2575fc;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background: #eee;
+}
+
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background: #fff;
+  color: #2575fc;
+  border-radius: 5px;
+  font-weight: bold;
+  text-decoration: none;
+  border: 2px solid #2575fc;
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  background: #2575fc;
+  color: #fff;
+}
+
+
+section {
+  padding: 4rem 2rem;
+}
+
+.about, .projects, .contact {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.project-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.project-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  padding: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+}
+
+footer {
+  background: #eee;
+  padding: 1rem;
+  text-align: center;
+}
+
+
+/* Tombol toggle pojok kanan atas */
+.toggle-btn {
+  position: fixed;
+  top: 1rem;
+  right: 23rem;
+  font-size: 1.5rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 999;
+  transition: transform 0.3s;
+}
+
+.toggle-btn:hover {
+  transform: rotate(20deg);
+}
+
+/* Transisi smooth antar mode */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #121212;
+  color: #e0e0e0;
+}
+
+body.dark-mode header {
+  background-color: #1e1e1e;
+}
+
+body.dark-mode .btn {
+  background-color: #333;
+  color: #fff;
+  border: 2px solid #555;
+}
+
+body.dark-mode .btn:hover {
+  background-color: #444;
+}
+
+body.dark-mode .project-card {
+  background-color: #222;
+  color: #ddd;
+}
