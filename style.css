@@ -175,10 +175,12 @@ body.dark-mode .project-card {
 }
 
 
-.project-card-link {
+a.project-card-link {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
+
 
 .project-card {
   border: 1px solid #ccc;
