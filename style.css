@@ -175,16 +175,23 @@ body.dark-mode .project-card {
 }
 
 
-.project-card {
-  display: block;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 10px;
+.project-card-link {
   text-decoration: none;
   color: inherit;
-  transition: background 0.2s ease;
 }
+
+.project-card {
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 10px 0;
+  transition: box-shadow 0.3s ease, transform 0.2s;
+  background: white;
+  cursor: pointer;
+}
+
 .project-card:hover {
-  background: #f0f0f0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-5px);
 }
 
