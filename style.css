@@ -173,3 +173,18 @@ body.dark-mode .project-card {
   background-color: #222;
   color: #ddd;
 }
+
+
+.project-card {
+  display: block;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: background 0.2s ease;
+}
+.project-card:hover {
+  background: #f0f0f0;
+}
+
