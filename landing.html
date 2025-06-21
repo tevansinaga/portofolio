@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Anime Music Landing</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    #bg-video.fade {
+      transition: opacity 0.5s ease;
+      opacity: 0;
+    }
+
+    .video-bg {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      backdrop-filter: blur(5px);
+      z-index: -1;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 10px #000;
+    }
+
+    .song-list {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 8px;
+      background: rgba(255,255,255,0.2);
+      color: #fff;
+      cursor: pointer;
+      backdrop-filter: blur(10px);
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: rgba(255,255,255,0.4);
+    }
+
+    .now-playing {
+      font-size: 1.1em;
+      margin-bottom: 15px;
+      text-shadow: 1px 1px 5px #000;
+    }
+
+    input[type="range"] {
+      width: 200px;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 480px) {
+      .song-list {
+        gap: 12px;
+      }
+      button {
+        padding: 12px 20px;
+        font-size: 0.95rem;
+      }
+      input[type="range"] {
+        width: 150px;
+      }
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Default Video Background -->
+  <video id="bg-video" class="video-bg" muted>
+    <source src="videos/default.mp4" type="video/mp4">
+  </video>
+
+  <div class="overlay"></div>
+
+  <div class="container">
+    <h1>Anime Music Landing</h1>
+    <div class="now-playing" id="now-playing">Now Playing: None</div>
+    <div class="song-list">
+      <button onclick="playSong('aot')">Attack On Titan</button>
+      <button onclick="playSong('dandadan')">Dan Da Dan</button>
+      <button onclick="playSong('jujutsu')">Jujutsu No Kaisen</button>
+    </div>
+    <input type="range" min="0" max="1" step="0.01" onchange="setVolume(this.value)" />
+  </div>
+
+  <audio id="audio-player"></audio>
+
+  <script>
+    const songs = {
+      aot: {
+        name: 'Attack On Titan',
+        file: 'audio/aot.mp3',
+        video: 'videos/aot.mp4'
+      },
+      dandadan: {
+        name: 'Dan Da Dan',
+        file: 'audio/dandadan.mp3',
+        video: 'videos/dandadan.mp4'
+      },
+      jujutsu: {
+        name: 'Jujutsu No Kaisen',
+        file: 'audio/jujutsu.mp3',
+        video: 'videos/jujutsu.mp4'
+      }
+    };
+
+    function setVolume(val) {
+      const audio = document.getElementById('audio-player');
+      audio.volume = val;
+    }
+
+    function playSong(key) {
+      const audio = document.getElementById('audio-player');
+      const bgVideo = document.getElementById('bg-video');
+      const nowPlaying = document.getElementById('now-playing');
+      const song = songs[key];
+
+      // Update teks judul lagu
+      nowPlaying.textContent = `Now Playing: ${song.name}`;
+
+      // Set loop false agar hanya main sekali
+      audio.loop = false;
+      bgVideo.loop = false;
+
+      // Fade out video lama
+      bgVideo.classList.add('fade');
+
+      setTimeout(() => {
+        // Ganti video
+        bgVideo.src = song.video;
+        bgVideo.load();
+        bgVideo.play();
+        bgVideo.classList.remove('fade');
+      }, 300);
+
+      // Ganti audio
+      audio.src = song.file;
+      audio.load();
+      audio.play();
+    }
+  </script>
+
+</body>
+</html>
